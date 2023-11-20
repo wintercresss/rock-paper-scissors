@@ -11,7 +11,7 @@ function getComputerChoice() { // will randomly generate either rock, paper, or 
     }
 }
 
-function playRound(playerSelection) {
+function playRound(playerSelection) { // just brute force check every combination, since not that many for rock paper scissors
     var computerchoice = getComputerChoice();
     var playerchoice = playerSelection.toLowerCase() // make player choice all lowercase so that the player can input any capitalization they want
     var winstring = "You win! You chose " + playerchoice + " while the enemy chose " + computerchoice + "!"
@@ -45,7 +45,27 @@ function playRound(playerSelection) {
         return losestring
     }
 
-    return "not a draw"
+    return "invalid input! please enter rock, paper, or scissors"
 }
 
-console.log(playRound("scissors"))
+function game() {
+    var losscount = 0
+    var wincount = 0
+    var drawcount = 0
+    for (let i = 0; i < 5; i++) { // play 5 games
+        let choice = prompt("Make a choice!")
+        let roundresult = playRound(choice)
+        console.log(roundresult)
+        if (roundresult.includes("Draw!")) {
+            drawcount += 1
+        } else if (roundresult.includes("You win!")) {
+            wincount += 1
+        } else {
+            losscount += 1
+        }
+    }
+
+    return "You won " + wincount + ", lost " + losscount + ", and drew " + drawcount + " games!"
+}
+
+console.log(game())
