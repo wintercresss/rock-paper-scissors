@@ -1,0 +1,1 @@
+Quick rock paper scissors game in javascript to learn javascript syntax
